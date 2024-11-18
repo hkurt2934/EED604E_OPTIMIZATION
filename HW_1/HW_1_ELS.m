@@ -55,3 +55,5 @@ xlabel('Number of Iteration');
 legend('a estimate', 'b estimate', 'c estimate', 'Location', 'Best');
 title('ELS Algorithm');
 grid on;
+f = gcf;
+exportgraphics(f,'ELS.png');

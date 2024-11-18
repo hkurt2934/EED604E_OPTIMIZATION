@@ -42,3 +42,5 @@ xlabel('Sample');
 legend('a estimate', 'b estimate', 'c estimate', 'Location', 'Best');
 title('Projection Algorithm');
 grid on;
+f = gcf;
+exportgraphics(f,'PA.png');

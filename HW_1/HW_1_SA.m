@@ -42,4 +42,4 @@ legend('a estimate', 'b estimate', 'c estimate', 'Location', 'Southeast');
 title('Stochastic Algorithm');
 grid on;
 f = gcf;
-exportgraphics(f,'Test.png');
+exportgraphics(f,'SA.png');

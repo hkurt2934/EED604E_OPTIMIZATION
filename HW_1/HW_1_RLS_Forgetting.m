@@ -44,4 +44,6 @@ xlabel('Sample');
 legend('a estimate', 'b estimate', 'c estimate', 'Location', 'Southeast');
 title('RLS Algorithm with Forgetting Factor');
 grid on;
+f = gcf;
+exportgraphics(f,'RLS_Forgetting.png');
 
