@@ -30,16 +30,16 @@ for t = 2:N
 end
 
 figure;
-plot(1:iter, theta_store(1, 1:iter), 'r', 'LineWidth', 2); 
+plot(theta_store(1, 2:N), 'r', 'LineWidth', 2); 
 hold on;
-plot(1:iter, theta_store(2, 1:iter), 'g', 'LineWidth', 2);
-plot(1:iter, theta_store(3, 1:iter), 'b', 'LineWidth', 2);
+plot(theta_store(2, 2:N), 'g', 'LineWidth', 2);
+plot(theta_store(3, 2:N), 'b', 'LineWidth', 2);
 yline(a_desired, '--r', 'Desired a');
 yline(b_desired, '--g', 'Desired b');
 yline(c_desired, '--b', 'Desired c');
-xlabel('Number of Iteration');
+xlabel('Sample');
 legend('a estimate', 'b estimate', 'c estimate', 'Location', 'Best');
 title('ELS Algorithm');
 grid on;
 f = gcf;
-exportgraphics(f,'ELS_1.png');
+exportgraphics(f,'ELS_2.png');

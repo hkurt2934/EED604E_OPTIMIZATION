@@ -2,7 +2,7 @@
 
 N = 1000;
 sigma2 = 0.5;
-forgetting_factor = 0.99;
+forgetting_factor = 0.60;
 
 a_desired = 1; 
 b_desired = 0.5;
@@ -42,8 +42,8 @@ yline(b_desired, '--g', 'Desired b');
 yline(c_desired, '--b', 'Desired c');
 xlabel('Sample');
 legend('a estimate', 'b estimate', 'c estimate', 'Location', 'Southeast');
-title('RLS Algorithm with Forgetting Factor');
+title('RLS Algorithm with Forgetting Factor (0.99)');
 grid on;
 f = gcf;
-exportgraphics(f,'RLS_Forgetting.png');
+exportgraphics(f,'RLS_Forgetting_0_60.png');
 

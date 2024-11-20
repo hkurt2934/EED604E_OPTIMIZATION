@@ -42,4 +42,4 @@ legend('a estimate', 'b estimate', 'c estimate', 'Location', 'Southeast');
 title('LMS Algorithm');
 grid on;
 f = gcf;
-exportgraphics(f,'LMS.png');
+exportgraphics(f,'LMS_1.png');
