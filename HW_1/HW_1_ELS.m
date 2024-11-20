@@ -15,33 +15,19 @@ e = E(1).e;
 for t = 2:N
     y(t) = -a_desired * y(t-1) + b_desired * u(t-1) + c_desired * e(t-1) + e(t);
 end
-
 theta_hat = zeros(3, 1); % [a, b, c]
+P = 100 * eye(3);
 phi = zeros(3, 1);
-max_iter = 50;
-tolerance = 1e-6;
-theta_store = zeros(3, N);
-for iter = 1:max_iter
-    
-    Phi = zeros(N, 3);
-    Y = zeros(N, 1);
-    for t = 3:N
-        e_prev_est = y(t-1) - (-theta_hat(1)*y(t-2) + theta_hat(2)*u(t-2) + theta_hat(3)*e(t-2));
-        phi = [-y(t-1), u(t-1), e_prev_est];
-        Phi(t-1, :) = phi;
-        Y(t-1) = y(t);
-    end
-    
-    theta_new = (Phi' * Phi) \ (Phi' * Y);
-    if norm(theta_new - theta_hat) < tolerance
-        break;
-    end
-    
-    theta_hat = theta_new;
-    theta_store(:, iter) = theta_hat;
-end
 
-theta_store = theta_store(:, 1:iter);
+theta_store = zeros(3, N);
+for t = 2:N
+    phi = [-y(t-1); u(t-1); e(t-1)];
+    error = y(t) - phi' * theta_hat;
+    M = (P*phi)/(1 + phi'*P*phi);
+    P = P - (P*phi*phi'*P) / (1 + phi'*P*phi);
+    theta_hat = theta_hat + M * error;
+    theta_store(:, t) = theta_hat;
+end
 
 figure;
 plot(1:iter, theta_store(1, 1:iter), 'r', 'LineWidth', 2); 
@@ -56,4 +42,4 @@ legend('a estimate', 'b estimate', 'c estimate', 'Location', 'Best');
 title('ELS Algorithm');
 grid on;
 f = gcf;
-exportgraphics(f,'ELS.png');
+exportgraphics(f,'ELS_1.png');
