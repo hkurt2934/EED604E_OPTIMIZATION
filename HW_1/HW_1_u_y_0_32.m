@@ -42,5 +42,5 @@ legend('a estimate', 'b estimate', 'c estimate', 'Location', 'Southeast');
 title('RLS Algorithm with 0.32*y feedback');
 grid on;
 f = gcf;
-exportgraphics(f,'Y_0_32.png');
+exportgraphics(f,'Y_0_32_1.png');
 
